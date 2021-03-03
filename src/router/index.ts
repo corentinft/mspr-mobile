@@ -20,27 +20,20 @@ const routes: Array<RouteRecordRaw> = [
         path: 'login',
         component: () => import('@/views/Auth/Connection.vue')
       }
+
     ]
   }
-  //,
-  // {
-  //   path: '/home',
-  //   component: TabsHome,
-  //   children: [
-  //     {
-  //       path: '',
-  //       redirect: '/home/xxx'
-  //     },
-  //     {
-  //       path: '/xxx',
-  //       component: () => import("@/views/App/xxx.vue")
-  //     },
-  //     {
-  //       path: '/zzz',
-  //       component: () => import("@/views/App/zzz.vue")
-  //     }
-  //   ]
-  // }
+  ,
+  {
+    path: '/App',
+    component: TabsHome,
+    children: [
+      {
+        path: 'Promotions',
+        component: () => import('@/views/App/Promotions.vue')
+      }
+    ]
+  }
 ]
 
 const router = createRouter({
