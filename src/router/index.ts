@@ -1,38 +1,46 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import Tabs from '../views/Tabs.vue'
+import TabsAuth from '../views/Auth/TabsAuth.vue';
+import TabsHome from '../views/App/TabsHome.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/auth/login'
   },
   {
-    path: '/tabs/',
-    component: Tabs,
+    path: '/auth/',
+    component: TabsAuth,
     children: [
       {
         path: '',
-        redirect: '/tabs/tab1'
+        redirect: '/auth/login'
       },
       {
-        path: 'tab1',
-        component: () => import('@/views/Tab1.vue')
-      },
-      {
-        path: 'tab2',
-        component: () => import('@/views/Tab2.vue')
-      },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3.vue')
-      },
-      {
-        path: 'tab4',
-        component: () => import('@/views/Tab4.vue')
+        path: 'login',
+        component: () => import('@/views/Auth/Connection.vue')
       }
     ]
   }
+  //,
+  // {
+  //   path: '/home',
+  //   component: TabsHome,
+  //   children: [
+  //     {
+  //       path: '',
+  //       redirect: '/home/xxx'
+  //     },
+  //     {
+  //       path: '/xxx',
+  //       component: () => import("@/views/App/xxx.vue")
+  //     },
+  //     {
+  //       path: '/zzz',
+  //       component: () => import("@/views/App/zzz.vue")
+  //     }
+  //   ]
+  // }
 ]
 
 const router = createRouter({
