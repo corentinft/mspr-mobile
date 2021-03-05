@@ -25,7 +25,8 @@
 
           <ion-row responsive-sm>
             <ion-col>
-              <ion-button expand="block" @click.prevent="login(form)">Connexion</ion-button>
+              <!--@click="() => router.push('/auth/promo') ;"-->
+              <ion-button expand="block" @click.prevent="login(form)" >Connexion</ion-button>
             </ion-col>
           </ion-row>
 
@@ -36,8 +37,9 @@
 </template>
 
 <script>
-import {IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/vue';
+import {IonPage, IonHeader, IonToolbar, IonTitle, IonContent, toastController} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
+import { useRouter } from 'vue-router';
 
 export default {
   name: "Connection",
@@ -55,14 +57,45 @@ export default {
       form: {
         email: "",
         password: ""
-      }
+      },
+      token: ""
     }
   },
   methods: {
     login(form) {
       console.log(form)
       this.$store.dispatch('login', form)
+    },
+    async openToastOptions() {
+      const toast = await toastController
+          .create({
+            header: 'Erreur lors de la connexion',
+            position: 'top',
+            buttons: [
+              {
+                text: 'OK',
+                role: 'cancel',
+                handler: () => {
+                  console.log('Cancel clicked');
+                }
+              }
+            ]
+          })
+      return toast.present();
+    },
+    storeToken(token) {
+      const datas = localStorage.getItem("token");
+      if (datas == "" || datas == null) {
+        localStorage.setItem("token", JSON.stringify([]));
+      }
+      this.token = JSON.parse(localStorage.getItem("token"));
+      this.token.push(token)
+      localStorage.setItem("token", JSON.stringify(this.token));
     }
+  },
+  setup() {
+    const router = useRouter();
+    return { router };
   }
 }
 
