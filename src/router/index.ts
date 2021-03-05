@@ -19,8 +19,11 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'login',
         component: () => import('@/views/Auth/Connection.vue')
+      },
+      {
+        path: 'register',
+        component: () => import('@/views/Auth/Register.vue')
       }
-
     ]
   }
   ,
