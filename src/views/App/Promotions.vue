@@ -9,7 +9,7 @@
     <ion-content fullscreen>
       <ion-list>
         <ion-list-header>
-          Promotions disponible
+          <h1 class="test">Promotions disponible</h1>
         </ion-list-header>
 
         <ion-item>
@@ -29,11 +29,12 @@
           </ion-avatar>
           <ion-label>
             <h1>Asos</h1>
-            <h3>10 % de réduction sur tout le site (étudiant)</h3>
+            <h3></h3>
+            <pre>{{ $store.state.info[0].discount }}</pre>
             <p>Tout le temps</p>
           </ion-label>
         </ion-item>
-
+<ion-button @click="getPromos">Test get promos</ion-button>
       </ion-list>
     </ion-content>
   </ion-app>
@@ -41,7 +42,12 @@
 
 <script>
 export default {
-  name: "Promotions"
+  name: "Promotions",
+  methods: {
+    getPromos() {
+      this.$store.dispatch('getPromos')
+    }
+  }
 }
 </script>
 
