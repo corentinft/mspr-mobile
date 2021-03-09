@@ -73,8 +73,14 @@ export default {
     this.$store.watch(() => this.$store.state.status, status => {
       if (status == "401") {
         this.openToastError();
-      } else if (status == "200") {
-        this.openToastSuccess()
+      } else if (status == "200" && this.form.email != "") {
+        this.openToastSuccess();
+
+        // On réinitialise les champs a vide
+        this.form.email = "";
+        this.form.firstname = "";
+        this.form.lastname = "";
+        this.form.password = "";
       }
     })
   },

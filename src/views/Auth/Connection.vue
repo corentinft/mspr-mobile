@@ -22,14 +22,19 @@
               <input v-model="form.password" name="password" type="password" required/>
             </ion-item>
           </ion-list>
-
           <ion-row responsive-sm>
             <ion-col>
               <ion-button expand="block" @click.prevent="login(form)">Connexion</ion-button>
             </ion-col>
           </ion-row>
-
         </form>
+      </div>
+
+      <div>
+        <br><br><br><br>
+        <p style="text-align: center">Pas encore de compte ?
+          <a href="route.push('auth/register')">Créer mon compte !</a>
+        </p>
       </div>
     </ion-content>
   </ion-page>
@@ -39,6 +44,7 @@
 import {IonPage, IonHeader, IonToolbar, IonTitle, IonContent, toastController} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
 import {useRouter} from 'vue-router';
+import route from "../router";
 
 export default {
   name: "Connection",
