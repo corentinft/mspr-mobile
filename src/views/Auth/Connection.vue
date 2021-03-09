@@ -33,7 +33,7 @@
       <div>
         <br><br><br><br>
         <p style="text-align: center">Pas encore de compte ?
-          <a href="route.push('auth/register')">Créer mon compte !</a>
+<!--          <a href="route.push('auth/register')">Créer mon compte !</a>-->
         </p>
       </div>
     </ion-content>
