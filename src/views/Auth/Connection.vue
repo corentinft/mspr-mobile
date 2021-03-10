@@ -33,7 +33,7 @@
       <div>
         <br><br><br><br>
         <p style="text-align: center">Pas encore de compte ?
-<!--          <a href="route.push('auth/register')">Créer mon compte !</a>-->
+          <a href="/auth/register">Créer mon compte !</a>
         </p>
       </div>
     </ion-content>
@@ -44,7 +44,6 @@
 import {IonPage, IonHeader, IonToolbar, IonTitle, IonContent, toastController} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
 import {useRouter} from 'vue-router';
-import route from "../router";
 
 export default {
   name: "Connection",
