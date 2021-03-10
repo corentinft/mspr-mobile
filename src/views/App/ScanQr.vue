@@ -6,6 +6,7 @@
     <p class="decode-result">Résultat: <b>{{ result }}</b></p>
 
     <qrcode-stream @decode="onDecode" @init="onInit" />
+
   </div>
 </template>
 

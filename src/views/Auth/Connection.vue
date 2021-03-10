@@ -44,7 +44,6 @@
 import {IonPage, IonHeader, IonToolbar, IonTitle, IonContent, toastController} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
 import {useRouter} from 'vue-router';
-import route from "../router";
 
 export default {
   name: "Connection",
