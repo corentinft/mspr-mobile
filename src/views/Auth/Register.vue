@@ -69,11 +69,27 @@ export default {
       }
     }
   },
+  mounted() {
+    this.$store.watch(() => this.$store.state.status, status => {
+      if (status == "401") {
+        this.openToastError();
+      } else if (status == "200" && this.form.email != "") {
+        this.openToastSuccess();
+
+        // On réinitialise les champs a vide
+        this.form.email = "";
+        this.form.firstname = "";
+        this.form.lastname = "";
+        this.form.password = "";
+      }
+    })
+  },
   methods: {
     register(form) {
       this.$store.dispatch('register', form)
-    },
-    async openToastOptions() {
+    }
+    ,
+    async openToastError() {
       const toast = await toastController
           .create({
             header: 'Erreur lors de l\'inscription',
@@ -81,10 +97,22 @@ export default {
             buttons: [
               {
                 text: 'OK',
-                role: 'cancel',
-                handler: () => {
-                  console.log('Cancel clicked');
-                }
+                role: 'cancel'
+              }
+            ]
+          })
+      return toast.present();
+    }
+    ,
+    async openToastSuccess() {
+      const toast = await toastController
+          .create({
+            header: 'Inscription réussite ! Vous allez être rediriger vers la page de connexion.',
+            position: 'top',
+            buttons: [
+              {
+                text: 'OK',
+                role: 'cancel'
               }
             ]
           })
