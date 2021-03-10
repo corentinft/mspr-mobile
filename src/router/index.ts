@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import TabsAuth from '../views/Auth/TabsAuth.vue';
 import TabsHome from '../views/App/TabsHome.vue';
-import ScanQr from '../views/App/ScanQr.vue';
+import ScanQr from '../components/ScanQr.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
