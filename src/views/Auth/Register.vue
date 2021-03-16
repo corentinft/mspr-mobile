@@ -76,7 +76,7 @@ export default {
       } else if (status == "200" && this.form.email != "") {
         this.openToastSuccess();
 
-        // On réinitialise les champs a vide
+        // On réinitialise les champs a vide ""
         this.form.email = "";
         this.form.firstname = "";
         this.form.lastname = "";
@@ -87,13 +87,13 @@ export default {
   methods: {
     register(form) {
       this.$store.dispatch('register', form)
-    }
-    ,
+    },
     async openToastError() {
       const toast = await toastController
           .create({
             header: 'Erreur lors de l\'inscription',
             position: 'top',
+            duration: 5000,
             buttons: [
               {
                 text: 'OK',
@@ -107,8 +107,9 @@ export default {
     async openToastSuccess() {
       const toast = await toastController
           .create({
-            header: 'Inscription réussite ! Vous allez être rediriger vers la page de connexion.',
+            header: 'Inscription réussite ! Vous allez être redirigé vers la page de connexion.',
             position: 'top',
+            duration: 10000,
             buttons: [
               {
                 text: 'OK',

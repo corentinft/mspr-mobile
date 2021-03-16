@@ -67,7 +67,7 @@ export default {
   mounted() {
     this.$store.watch(() => this.$store.state.status, status => {
       if (status == "401") {
-        this.openToastError();
+          this.openToastError();
       }
     });
   },
@@ -80,6 +80,7 @@ export default {
           .create({
             header: 'Erreur lors de la connexion',
             position: 'top',
+            duration: 3000,
             buttons: [
               {
                 text: 'OK',

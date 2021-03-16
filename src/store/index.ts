@@ -21,7 +21,7 @@ export default createStore({
         state.token = response.data.token;
         state.status = "200";
         localStorage["token"] = response.data.token;
-        route.push('/auth/register');
+        route.push('/scan');
       }).catch(
           error => {
             state.status = "401";
