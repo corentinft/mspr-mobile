@@ -7,7 +7,7 @@
     </ion-header>
     <ion-content>
       <div class="login-logo">
-        <img src="public/assets/icon/icon.png" alt="Ionic logo">
+        <img src="../../../public/assets/icon/logo_large.png">
       </div>
 
       <div>
@@ -103,6 +103,7 @@ export default {
 </script>
 
 <style scoped>
+
 .login-logo {
   padding: 20px 0;
   min-height: 200px;
@@ -113,7 +114,4 @@ export default {
   max-width: 150px;
 }
 
-.list {
-  margin-bottom: 0;
-}
 </style>

@@ -3,8 +3,12 @@
     <ion-tabs>
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="Promotions" href="/App/Promotions">
-          <ion-icon :icon="personAddOutline" />
-          <ion-label>Inscription</ion-label>
+          <a class="iconSize">💰</a>
+          <ion-label>Promos</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="Scan" href="/scan">
+          <a class="iconSize">📸</a>
+          <ion-label>Scan</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -12,12 +16,12 @@
 </template>
 
 <script>
-import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from '@ionic/vue';
+import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonPage } from '@ionic/vue';
 import { ellipse, square, triangle, personCircle, personAddOutline } from 'ionicons/icons';
 
 export default {
 name: "TabsHome",
-  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
+  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonPage },
   setup() {
     return {
       ellipse,
@@ -32,5 +36,9 @@ name: "TabsHome",
 </script>
 
 <style scoped>
+
+.iconSize {
+  font-size: 25px;
+}
 
 </style>
