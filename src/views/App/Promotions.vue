@@ -12,47 +12,61 @@
           <h1 class="test">Promotions disponible</h1>
         </ion-list-header>
 
-        <ion-item>
+        <ion-item @click="SupressionAlert" v-for="item in $store.state.info" :key="item.id">
+
           <ion-avatar slot="start">
-            ✅
+            <h1 class="h1Emoji">{{item.emoji}}</h1>
           </ion-avatar>
           <ion-label>
-            <h1>Zalando</h1>
-            <h3>20 % de réduction sur tout le site</h3>
-            <p>Disponible jusqu'au 31/03/2021</p>
+            <h1> {{item.title}} </h1>
+
+            <h3>Description : {{item.description}}</h3>
+            <h3>Réductions : {{item.discount}} %</h3>
+
+
+            <p>jusqu'au : {{ new Date(item.valid_time).toLocaleDateString('fr', {year: 'numeric', month: 'long', day: 'numeric'}) }} </p>
           </ion-label>
         </ion-item>
 
-        <ion-item>
-          <ion-avatar slot="start">
-            ✅
-          </ion-avatar>
-          <ion-label>
-            <h1>Asos</h1>
-            <h3></h3>
-            <pre>{{ $store.state.info[0].discount }}</pre>
-            <p>Tout le temps</p>
-          </ion-label>
-        </ion-item>
-<ion-button @click="getPromos">Test get promos</ion-button>
       </ion-list>
     </ion-content>
   </ion-app>
 </template>
 
 <script>
+import { alertController } from '@ionic/vue';
 export default {
   name: "Promotions",
+
+  beforeMount() {
+    this.$store.dispatch('getPromos')
+  },
+
   methods: {
-    getPromos() {
-      this.$store.dispatch('getPromos')
-    }
+    async SupressionAlert() {
+      let item = "";
+      const Foreach = this.$store.state.info.forEach(element => item = element)
+      const alert = await alertController.create({
+        header: 'Description',
+        message: item.description,
+        buttons: ['Ok'],
+      });
+      return alert.present();
+    },
   }
+  //Si bouton refresh
+  //methods: {
+  //getPromos() {
+  //this.$store.dispatch('getPromos')
+  //}
+  //}
 }
 </script>
 
 <style scoped>
-.test {
-  color: red;
+.h1Emoji {
+  text-align: justify;
+  margin-top: 0;
+  font-size: 27px;
 }
 </style>
