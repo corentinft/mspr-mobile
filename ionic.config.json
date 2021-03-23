@@ -1,0 +1,8 @@
+{
+  "name": "mobil",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "id": "15f44432"
+}
