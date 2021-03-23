@@ -1,39 +1,61 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
-import { RouteRecordRaw } from 'vue-router';
-import Tabs from '../views/Tabs.vue'
+import {createRouter, createWebHistory} from '@ionic/vue-router';
+import {RouteRecordRaw} from 'vue-router';
+import TabsAuth from '../views/Auth/TabsAuth.vue';
+import TabsHome from '../views/App/TabsHome.vue';
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    redirect: '/tabs/tab1'
-  },
-  {
-    path: '/tabs/',
-    component: Tabs,
-    children: [
-      {
-        path: '',
-        redirect: '/tabs/tab1'
-      },
-      {
-        path: 'tab1',
-        component: () => import('@/views/Tab1.vue')
-      },
-      {
-        path: 'tab2',
-        component: () => import('@/views/Tab2.vue')
-      },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3.vue')
-      }
-    ]
-  }
+    {
+        path: '/',
+        redirect: '/auth/login'
+    },
+    {
+        path: '/auth/',
+        component: TabsAuth,
+        children: [
+            {
+                path: '',
+                redirect: '/auth/login'
+            },
+            {
+                path: 'login',
+                name: 'login',
+                component: () => import('@/views/Auth/Connection.vue')
+            },
+            {
+                path: 'register',
+                name: 'register',
+                component: () => import('@/views/Auth/Register.vue')
+            }
+        ]
+    },
+    {
+        path: '/app',
+        component: TabsHome,
+        children: [
+            {
+                path: 'promotions',
+                name: 'promotions',
+                component: () => import('@/views/App/Promotions.vue')
+            },
+            {
+                path: 'scan',
+                name: 'scan',
+                component: () => import('@/views/App/Scan.vue')
+            }
+        ]
+    }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+    history: createWebHistory(process.env.BASE_URL),
+    routes
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.name !== 'login' && to.name !== 'register' && !localStorage.getItem('token')) {
+        next({name: 'login'});
+    }
+    next();
 })
 
 export default router
