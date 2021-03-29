@@ -97,6 +97,9 @@ export default {
   setup() {
     const router = useRouter();
     return {router};
+  },
+  beforeMount() {
+    localStorage.clear();
   }
 }
 
