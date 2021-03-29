@@ -7,7 +7,8 @@ export default createStore({
     token: "",
     status: "",
     id: "",
-    info: ""
+    info: "",
+    promo: ""
   },
   mutations: {
   },
@@ -25,7 +26,7 @@ export default createStore({
       }).catch(
           error => {
             state.status = "401";
-            if (error) throw error
+            if (error) throw error;
           }
       );
     },
@@ -43,19 +44,31 @@ export default createStore({
       }).catch(
           error => {
             state.status = "401";
-            if (error) throw error
+            if (error) throw error;
           }
       );
     },
     getPromos({state}) {
-      axios.get('promos', {
-        headers: {
-        "Authorization" : `Bearer ${localStorage.getItem("token")}`}
-      }).then(response => {
-        state.info = response.data
+      axios.get('promos?users.email=groupe@epsi.fr').then(response => {
+        state.info = response.data;
       }).catch(
           error => {
-            if (error) throw error
+            if (error) throw error;
+          }
+      );
+    },
+    checkCode({state}, code) {
+      state.status = "";
+      axios.post('get/promo', {
+        "promo": code
+      }).then(response => {
+        state.promo = response.data;
+        state.status = "200";
+      }).catch(
+          error => {
+            state.status = "400";
+            state.promo = error.response.status;
+            if (error) throw error;
           }
       );
     }
