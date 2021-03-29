@@ -1,13 +1,23 @@
 <template>
 
-  <div>
-    <p class="error">{{ error }}</p>
 
-    <p class="decode-result">Résultat: <b>{{ result }}</b></p>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Scan QR code</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-    <qrcode-stream @decode="onDecode" @init="onInit" />
+    <ion-content fullscreen>
+      <div>
+        <p class="error">{{ error }}</p>
 
-  </div>
+        <p class="decode-result">Last result: <b>{{ result }}</b></p>
+
+        <qrcode-stream @decode="onDecode" @init="onInit" />
+
+      </div>
+    </ion-content>
+
 </template>
 
 <script>
@@ -15,7 +25,10 @@ import { QrcodeStream } from 'vue-qrcode-reader'
 
 export default {
 
-  components: QrcodeStream,
+  components: {
+    QrcodeStream,
+
+  },
 
   data () {
     return {

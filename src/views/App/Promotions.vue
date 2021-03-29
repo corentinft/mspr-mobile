@@ -16,7 +16,7 @@
           <h1 class="test">Promotions disponible</h1>
         </ion-list-header>
 
-        <ion-item @click="SupressionAlert" v-for="item in $store.state.info" :key="item.id">
+        <ion-item @click="SupressionAlert(item.description)" v-for="item in $store.state.info" :key="item.id">
 
           <ion-avatar slot="start">
             <h1 class="h1Emoji">{{ item.emoji }}</h1>
@@ -47,12 +47,12 @@ export default {
     this.$store.dispatch('getPromos')
   },
   methods: {
-    async SupressionAlert() {
-      let item = "";
-      const Foreach = this.$store.state.info.forEach(element => item = element)
+    async SupressionAlert(description) {
+
       const alert = await alertController.create({
+
         header: 'Description',
-        message: item.description,
+        message: description,
         buttons: ['Ok'],
       });
       return alert.present();
