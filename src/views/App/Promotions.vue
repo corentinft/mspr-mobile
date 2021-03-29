@@ -26,7 +26,7 @@
 
             <h3>Description : {{ item.description }}</h3>
             <h3>Réductions : {{ item.discount }} %</h3>
-            <h3>Code : {{ item.codePromo }}</h3>
+            <h3>Code : {{ item.code_promo }}</h3>
 
             <p>jusqu'au : {{ new Date(item.valid_time).toLocaleDateString('fr', {year: 'numeric', month: 'long', day: 'numeric'}) }} </p>
           </ion-label>
@@ -72,12 +72,7 @@ export default {
       return toast.present();
     }
   }
-  //Si bouton refresh
-  //methods: {
-  //getPromos() {
-  //this.$store.dispatch('getPromos')
-  //}
-  //}
+
 }
 </script>
 
