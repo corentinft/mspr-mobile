@@ -43,7 +43,6 @@
 <script>
 import {IonPage, IonHeader, IonToolbar, IonTitle, IonContent, toastController} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
-import {useRouter} from 'vue-router';
 
 export default {
   name: "Connection",
@@ -92,10 +91,6 @@ export default {
           })
       return toast.present();
     }
-  },
-  setup() {
-    const router = useRouter();
-    return {router};
   }
 }
 
