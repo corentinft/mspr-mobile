@@ -7,7 +7,7 @@
     </ion-header>
     <ion-content>
       <div class="login-logo">
-        <img src="public/assets/icon/icon.png" alt="Ionic logo">
+        <img src="../../../public/assets/icon/logo_large.png">
       </div>
 
       <div>
@@ -33,7 +33,7 @@
       <div>
         <br><br><br><br>
         <p style="text-align: center">Pas encore de compte ?
-<!--          <a href="route.push('auth/register')">Créer mon compte !</a>-->
+          <a href="/auth/register">Créer mon compte !</a>
         </p>
       </div>
     </ion-content>
@@ -43,7 +43,7 @@
 <script>
 import {IonPage, IonHeader, IonToolbar, IonTitle, IonContent, toastController} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
-
+import {useRouter} from 'vue-router';
 export default {
   name: "Connection",
   components: {
@@ -66,7 +66,7 @@ export default {
   mounted() {
     this.$store.watch(() => this.$store.state.status, status => {
       if (status == "401") {
-        this.openToastError();
+          this.openToastError();
       }
     });
   },
@@ -79,6 +79,7 @@ export default {
           .create({
             header: 'Erreur lors de la connexion',
             position: 'top',
+            duration: 3000,
             buttons: [
               {
                 text: 'OK',
@@ -91,9 +92,15 @@ export default {
           })
       return toast.present();
     }
+  },
+  setup() {
+    const router = useRouter();
+    return {router};
+  },
+  beforeMount() {
+    localStorage.clear();
   }
 }
-
 </script>
 
 <style scoped>
@@ -102,12 +109,7 @@ export default {
   min-height: 200px;
   text-align: center;
 }
-
 .login-logo img {
   max-width: 150px;
-}
-
-.list {
-  margin-bottom: 0;
 }
 </style>
