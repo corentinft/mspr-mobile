@@ -19,7 +19,6 @@
 <script>
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from '@ionic/vue';
 import { ellipse, square, triangle, personCircle, personAddOutline } from 'ionicons/icons';
-
 export default {
   name: "TabAuth",
   components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
@@ -36,5 +35,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
