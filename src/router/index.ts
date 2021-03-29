@@ -2,7 +2,6 @@ import {createRouter, createWebHistory} from '@ionic/vue-router';
 import {RouteRecordRaw} from 'vue-router';
 import TabsAuth from '../views/Auth/TabsAuth.vue';
 import TabsHome from '../views/App/TabsHome.vue';
-import ScanQr from '../components/ScanQr.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -37,13 +36,13 @@ const routes: Array<RouteRecordRaw> = [
                 path: 'promotions',
                 name: 'promotions',
                 component: () => import('@/views/App/Promotions.vue')
+            },
+            {
+                path: 'scan',
+                name: 'scan',
+                component: () => import('@/views/App/Scan.vue')
             }
         ]
-    }
-    ,
-    {
-        path: '/scan',
-        component: ScanQr
     }
 ]
 

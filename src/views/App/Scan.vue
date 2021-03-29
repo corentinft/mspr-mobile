@@ -1,5 +1,5 @@
 <template>
-
+  <ion-app>
 
     <ion-header>
       <ion-toolbar>
@@ -14,34 +14,35 @@
         <p class="decode-result">Last result: <b>{{ result }}</b></p>
 
         <qrcode-stream @decode="onDecode" @init="onInit" />
-
+        <qrcode-drop-zone></qrcode-drop-zone>
+        <qrcode-capture></qrcode-capture>
       </div>
     </ion-content>
 
+  </ion-app>
 </template>
 
 <script>
-import { QrcodeStream } from 'vue-qrcode-reader'
-
+import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
 export default {
-
+  name: "Scan",
+  
   components: {
     QrcodeStream,
-
+    QrcodeDropZone,
+    QrcodeCapture
   },
-
+  
   data () {
     return {
       result: '',
       error: ''
     }
   },
-
   methods: {
     onDecode (result) {
       this.result = result
     },
-
     async onInit (promise) {
       try {
         await promise
