@@ -4,6 +4,8 @@ import router from './router';
 import Axios from 'axios';
 import store from './store';
 
+
+
 Axios.defaults.baseURL = "https://mspr.corentin-fouquet.tech/";
 Axios.interceptors.request.use(function (config) {
     const token = localStorage.getItem('token')

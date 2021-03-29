@@ -26,13 +26,13 @@
 
             <h3>Description : {{ item.description }}</h3>
             <h3>Réductions : {{ item.discount }} %</h3>
-
+            <h3>Code : {{ item.codePromo }}</h3>
 
             <p>jusqu'au : {{ new Date(item.valid_time).toLocaleDateString('fr', {year: 'numeric', month: 'long', day: 'numeric'}) }} </p>
           </ion-label>
         </ion-item>
-
       </ion-list>
+
     </ion-content>
   </ion-app>
 </template>
